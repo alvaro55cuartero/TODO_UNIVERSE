@@ -1,0 +1,28 @@
+{
+  "name": "todo_universe",
+  "version": "1.0.0",
+  "description": "TODO UNIVERSE WEB PAGE",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Alvaro Cuartero Casimiro",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvaro55cuartero/TODO_UNIVERSE.git"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "passport": "*",
+    "passport-jwt": "*",
+    "jsonwebtoken": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/alvaro55cuartero/TODO_UNIVERSE/issues"
+  },
+  "homepage": "https://github.com/alvaro55cuartero/TODO_UNIVERSE#readme",
+  "devDependencies": {}
+}
