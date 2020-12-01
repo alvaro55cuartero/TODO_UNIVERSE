@@ -1,0 +1,55 @@
+@keyframes ex
+  0%
+    color: transparent
+  80%
+    color: transparent
+  100%
+    color: black
+
+
+@keyframes con
+  20%
+    color: transparent
+  100%
+    display: none
+    color: transparent
+
+
+.extend
+  animation-name: ex
+  animation-duration: .5s
+  padding: 10px
+  height: 80px
+
+.contract
+  animation-name: con
+  animation-duration: .5s
+  height: 0px
+  padding: 0px
+  color: transparent
+
+
+a
+  text-align: center
+  cursor: pointer
+
+.text
+  padding-left: 10px
+
+.text:hover
+  background-color: #aaa
+
+.top
+  margin-top: 5px
+  background: #bbb
+  height: 40px
+  line-height: 40px
+  cursor: pointer
+  user-select: none
+
+.menu
+  background: #ddd
+  user-select: none
+  transition-property: height, padding
+  transition-duration: .5s
+  transition-timing-function: ease

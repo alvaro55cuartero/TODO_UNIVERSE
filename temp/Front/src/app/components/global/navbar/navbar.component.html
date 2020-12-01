@@ -1,0 +1,13 @@
+<nav appSticky >
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Index</a>
+  <a *ngIf="loginService.isAdmin()" routerLink="admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Admin</a>
+  <a routerLink="news" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">News</a>
+  <a *ngIf="loginService.isUser()" routerLink="editor" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Editor</a>
+  <a routerLink="texts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Texts</a>
+  <a routerLink="encyclopedia" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Encyclopedia</a>
+  <a *ngIf="loginService.isUser()" routerLink="profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Profile</a>
+  <a *ngIf="loginService.isGuest()" routerLink="login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login</a>
+  <a *ngIf="loginService.isGuest()" routerLink="signin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Signin</a>
+
+  <a *ngIf="loginService.isUser()" (click)="onLogoutClick()" class="right">Logout</a>
+</nav>

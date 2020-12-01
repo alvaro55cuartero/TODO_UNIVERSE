@@ -1,0 +1,21 @@
+  <div class="card bg-white pointer" (click)="onBookClick()">
+  <div class="card-title fnt-white">
+    <div>
+      <h2 class="center">{{text.title}}</h2>
+      <div class="center">Author:  <a rel="author" (click)="onAuthorClick()"> {{text.username}}</a></div>
+    </div>
+
+    <div class="votes">
+      <div class="center circle pointer"  (click)="onUpvoteClick($event)">
+        <i [ngClass]="{'active':upvote}" class="fas fa-angle-double-up arrow" ></i>
+      </div>
+      <div class="center circle pointer"  (click)="onDownvoteClick($event)">
+        <i [ngClass]="{'active':downvote}" class="fas fa-angle-double-down arrow" ></i>
+      </div>
+    </div>
+  </div>
+  <div class="card-body fnt-black">
+    {{text.synopsis}}
+  </div>
+
+</div>

@@ -1,0 +1,8 @@
+<div id="modal" [ngClass]="{'alert':true, 'visible':visible}">
+  <div class="alert-body">
+    <h3>{{message}}</h3>
+    <br><br><br><br>
+    <button (click)="onCloseClick();">Close</button>
+    <button (click)="onAcceptClick();">Accept</button>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+$width: 50px
+$radius: 10px
+
+@keyframes example
+	0%
+		box-shadow: 0px 0px 15px 4px #222
+
+	50%
+		box-shadow: 0px 0px 15px 6px #eda538
+
+	100%
+		box-shadow: 0px 0px 15px 4px #ef9002 /*#eda600*/
+
+
+.votes
+	position: relative
+	top: 95px
+
+
+
+.card:hover
+	animation-name: example
+	animation-duration: 0.4s
+	box-shadow: 0px 0px 15px 3px #ef9002
+
+
+.card-title
+	flex: 0 0 50%
+	background-color: #333
+	border-radius: $radius $radius 0 0
+
+
+.card-body
+	flex: 0 0 50%
+	background-color: #999
+	border-radius: 0 0 $radius $radius
+	padding: 40px
+
+
+.Item-List
+	width: 100%
+	height: $width
+	text-align: center
+	font-size: 30px
+	border: none
+	margin-bottom: 5px
+
+
+
+.center
+	text-align: center
+
+.left
+	border-radius: 20% 0 0 20%
+	display: inline-block
+	padding: 5px
+	width: 50px
+
+.right
+	border-radius: 0 25% 25% 0
+	display: inline-block
+	padding: 5px
+	width: 50px
+
+.circle
+	border-radius: 50%
+	display: inline-block
+	width: 40px
+	height: 40px
+	line-height: 50px
+	margin-left: 10px
+	background-color: #777
+	box-shadow: 0px 0px 5px #222
+
+.circle-in
+	position: relative
+	top: 7px
+	right: 0.5px
+
+.arrow
+	color: #333
+	font-size: 30px
+
+.active
+	color: #ef9002
+
+.Tale-Selection-Title
+	width: 100%
+	text-align: center
+	border: none
+	background-color: #ddd
+
+
+.Tale-Selection-Title:hover
+	background-color: #ccc

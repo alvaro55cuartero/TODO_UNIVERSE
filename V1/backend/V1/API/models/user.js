@@ -4,36 +4,28 @@ const bcrypt = require("bcrypt");
 
 const UserSchema = mongoose.Schema({
 
-    name: {
-        type: String,
-        min: [4, "Name is too short"],
-        max: [40, "Name is too long"],
-        required: [true, "Name is required"],
-        unique: true
-    },
+	email: {
+		type: String,
+		validate: [validator.isEmail, "Email is not correct"],
+		required: true,
+		unique: true
+	},
 
-    email: {
-        type: String,
-        validate: [validator.isEmail, "Email is not correct"],
-        required: true,
-        unique: true
-    },
+	password: {
+		type: String,
+		required: true
+	},
 
-    password: {
-        type: String,
-        required: true
-    },
+	status: {
+		type: Number,
+		required: true,
+		default: 1
+	},
 
-    status: {
-        type: String,
-        required: true,
-        default: "User"
-    },
-
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+	createdAt: {
+		type: Date,
+		default: Date.now
+	}
 });
 
 
@@ -44,18 +36,67 @@ const User = module.exports = mongoose.model("User", UserSchema);
 //Functions
 
 
-// GET USER PUBLIC INFO
 
-module.exports.getUser = function(userId, callback) {
-    User.findById(userId, (err, user)=>{
+// Get user public info by id
 
-        let publicUser = {
-            name: user.name,
-            status: user.status
-        };
+module.exports.getPublicUserById = function(userId, callback) {
 
-        callback(err, publicUser);
-    });
+	User.findById(userId, (err, user)=>{
+
+		let publicUser = {
+			email: user.email,
+			status: user.status
+		};
+		console.log(publicUser);
+
+		callback(err, publicUser);
+	});
+}
+
+
+
+// Get user public info by query
+
+module.exports.getPublicUser = function(email, callback) {
+	User.findOne(user, (err, user)=>{
+		let publicUser = {
+			email: user.email,
+			status: user.status
+		};
+
+		callback(err, publicUser);
+	});
+}
+
+// Get users public info by query
+
+module.exports.getPublicUsers = function(callback) {
+	User.find({}, 'username status', callback);
+}
+
+// Get user private info by id
+
+module.exports.getPrivateUserById = function(userId, callback) {
+	User.findById(userId, (err, user)=>{
+		console.log(err);
+		let privateUser = {
+			email: user.email,
+			status: user.status,
+			password: user.password
+		};
+
+		callback(err, privateUser);
+	});
+}
+
+
+
+// Get user private info by query
+
+module.exports.getPrivateUser = function(email, callback) {
+	User.findOne({email: email}, (err, user)=>{
+		callback(err, user);
+	});
 }
 
 
@@ -63,18 +104,18 @@ module.exports.getUser = function(userId, callback) {
 
 module.exports.createUser = function(user, callback) {
  
-    bcrypt.hash(user.password, 10, (err, hash) => {
-        
-        if (err) {
+	bcrypt.hash(user.password, 10, (err, hash) => {
+		
+		if (err) {
 
-            callback(err);
+			callback(err);
 
-        } else {
+		} else {
 
-            user.password = hash;
-            _user = new User(user);
-            _user.save(callback);
+			user.password = hash;
+			_user = new User(user);
+			_user.save(callback);
 
-        }
-    });
-} 
+		}
+	});
+}

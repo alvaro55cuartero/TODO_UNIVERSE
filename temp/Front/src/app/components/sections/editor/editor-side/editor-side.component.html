@@ -1,0 +1,7 @@
+<div [ngClass]="{'open':open,'tab':true}">
+  <div  id="cross" (click)="onTabClick()" [innerHTML]="cross"></div>
+  <div class="content">
+    <h2>Synopsis</h2>
+    <textarea name="name" rows="8" cols="50" class="synopsis" [(ngModel)]="book.synopsis"></textarea>
+  </div>
+</div>

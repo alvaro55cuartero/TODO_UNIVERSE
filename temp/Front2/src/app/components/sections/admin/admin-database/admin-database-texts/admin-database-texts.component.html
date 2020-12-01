@@ -1,0 +1,29 @@
+<div >
+	<app-accordion-item title="ADD">
+		<form [formGroup]="textForm" (ngSubmit)="onSubmit()">
+			<label>
+				Title:
+				<input type="text" formControlName="title">
+			</label>
+		  
+			<label>
+				Author:
+				<input type="text" formControlName="author">
+			</label>
+
+			<input type="submit">
+		</form>
+	</app-accordion-item>
+</div>
+<br>
+<div class="bg-c row" *ngFor="let item of data">
+	<div class="s10 p-1">
+		{{item.title}}
+	</div>
+	<a routerLink="../../../texts/{{item._id}}" class="button s1 p-1">
+		READ
+	</a>
+	<div class="button s1 p-1">
+		EDIT
+	</div>
+</div>

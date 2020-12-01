@@ -1,0 +1,19 @@
+<div class="main">
+  <div *ngIf="book" class="panel bg-white">
+    <div class="">
+      <div class="">
+        <h1>{{book.title}}</h1>
+        <address class="author">By <a rel="author" (click)="onAuthorClick()">{{book.username}}</a></address>
+      </div>
+      <div class="tag">
+        <a class="button">{{book.upvote}}</a>
+        <a class="button">{{book.downvote}}</a>
+      </div>
+    </div>
+
+    <br>
+    <div class="text">
+      {{book.text}}
+    </div>
+  </div>
+</div>

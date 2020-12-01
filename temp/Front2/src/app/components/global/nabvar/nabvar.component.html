@@ -1,0 +1,13 @@
+<nav>
+	<a routerLink="/"				*ngIf="true"								routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Index			</a>
+	<a routerLink="admin"			*ngIf="this.loginService.isAdmin()"			routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Admin			</a>
+	<a routerLink="news"			*ngIf="true"								routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		News			</a>
+	<a routerLink="editor"			*ngIf="this.loginService.isLogged()"			routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Editor			</a>
+	<a routerLink="texts"			*ngIf="true"								routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Texts			</a>
+	<a routerLink="encyclopedia"	*ngIf="true"								routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Encyclopedia	</a>
+	<a routerLink="profile"			*ngIf="this.loginService.isLogged()"		routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Profile			</a>
+	<a routerLink="login"			*ngIf="this.loginService.isGuest()"			routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Login			</a>
+	<a routerLink="signin"			*ngIf="this.loginService.isGuest()"			routerLinkActive="active"		[routerLinkActiveOptions]="{exact:true}">		Signin			</a>
+
+	<a routerLink="/"  				*ngIf="this.loginService.isLogged()" 			(click)="onLogoutClick()" 		class="right">Logout</a>
+</nav>

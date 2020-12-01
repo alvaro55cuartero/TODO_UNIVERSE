@@ -1,0 +1,18 @@
+<div class="top row">
+  <div (click)="toggleMenu()" [ngClass]="(text.status=='wip')?'s8':'s10'" class="text">{{text.title}}</div>
+  <a class="s2 yellow" *ngIf="text.status == 'wip'" (click)="onTextEditClick(text._id)">Edit</a>
+  <a class="s2 red" *ngIf="text.status == 'wip'" (click)="onTextDeleteClick(text._id)">Delete</a>
+  <a class="s2 green" *ngIf="text.status == 'finish'" (click)="onTextReadClick(text)">Read</a>
+</div>
+
+<div [ngClass]="menuVisible ? 'extend' : 'contract'" class="menu">
+  <div class="">
+    Status: {{text.status}}
+  </div>
+  <div class="">
+    Up Votes: {{text.upvote}}
+  </div>
+  <div class="">
+    Down Votes: {{text.downvote}}
+  </div>
+</div>

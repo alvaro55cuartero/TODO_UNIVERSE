@@ -1,0 +1,17 @@
+
+<div class="main">
+	<!--<form id="Tale-Filter" method="POST">
+		<div class="Tale-Filter-Item">Mejor Valorados</div>
+		<div class="Tale-Filter-Item">Ultimos Textos</div>
+		<div class="Tale-Filter-Item-Title">status</div>
+		<div class="Tale-Filter-Item">Leyendas</div>
+		<div class="Tale-Filter-Item">Mitos</div>
+
+		<input id="Tale-Filter-Out" type="hidden" name="filter">
+		<input id="Tale-Filter-Submit" type="submit" value="Filtrar">
+	</form>-->
+
+	<div class="row">
+		<app-text-item class="s4" *ngFor="let text of texts" [text]="text"></app-text-item>
+	</div>
+</div>

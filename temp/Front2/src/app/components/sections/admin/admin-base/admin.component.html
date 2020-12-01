@@ -1,0 +1,12 @@
+<div id="Admin-Main">
+	<div id="Admin-Sidenav" action="./index.php" method="post">
+		<button>X</button>
+		<input type="submit" routerLink="./news" value="News">
+        <input type="submit" routerLink="./newcomers" value="Newcomers">
+		<input type="submit" routerLink="./database" value="DDBB"/>
+		<input type="submit" routerLink="./stats" value="stats"/>
+ 	</div>
+	<div id="Admin-Body" class ="main">
+		<router-outlet></router-outlet>
+	</div>
+</div>
