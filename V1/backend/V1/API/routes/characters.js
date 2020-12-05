@@ -29,7 +29,6 @@ const UserLoginSchema = joi.object().keys({
 //Get Texts
 
 router.get("", (req, res) => {
-	console.log("aaaaaaa");
 	Character.getPublicCharacters((err, data) => {
 		console.log(err);
 		res.json(data);
