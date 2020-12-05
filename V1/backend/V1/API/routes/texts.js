@@ -38,7 +38,6 @@ router.get("/:title", (req, res) => {
 
 router.get("", (req, res) => {
 	Text.getPublicTexts((err, data) => {
-		console.log(data);
 		res.json(data);
 	});
 });

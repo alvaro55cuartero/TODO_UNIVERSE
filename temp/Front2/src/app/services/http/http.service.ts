@@ -11,24 +11,28 @@ export class HttpService {
 
 	get(path, callback) {
 		let token = localStorage.getItem("id_token");
+		let headers = new HttpHeaders();
 
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
+		headers = headers.append('Content-Type', 'application/json');
+		
+		if (token) {
+			headers = headers.append('Authorization', token);
+		}
+		
 		return this.http.get(path, {headers: headers}).subscribe(callback);
 	}
 
 	post(path, data, callback) {
 		let token = localStorage.getItem("id_token");
+		let headers = new HttpHeaders();
 
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
+		headers = headers.append('Content-Type', 'application/json');
+		
+		if (token) {
+			headers = headers.append('Authorization', token);
+		}
 
-		console.log(path, data, headers);
-		this.http.post(path, data, {headers: headers}).subscribe();
+		this.http.post(path, data, {headers: headers}).subscribe(callback);
 	}
 
 

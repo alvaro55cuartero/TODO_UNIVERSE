@@ -38,7 +38,6 @@ router.get("", (req, res) => {
 //Get User Profile
 
 router.get("/profile", passport.authenticate('jwt', { session: false }), (req, res) => {
-	console.log(req.user.email);
 	User.getPrivateUser(req.user.email, (err, data)=>{
 		res.json(data);
 	});
@@ -93,7 +92,6 @@ router.post("/signup", (req, res, next)=>{
 //User Login
 
 router.post("/login",(req, res, next) => {
-	console.log("222222222222");
 	let user = req.body;
 	const result = UserLoginSchema.validate(user);
 	let err = typeof result.error !== 'undefined';
