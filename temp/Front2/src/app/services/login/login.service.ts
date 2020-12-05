@@ -43,7 +43,7 @@ export class LoginService {
 	}
 
 	updateStatus() {
-		this.http.userPostProfile((data: any) => {
+		this.http.userGetProfile((data: any) => {
 			if (data) {
 				this.status = data.status;
 			} else {

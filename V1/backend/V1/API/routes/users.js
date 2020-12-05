@@ -30,16 +30,19 @@ const UserLoginSchema = joi.object().keys({
 //Get Users
 
 router.get("", (req, res) => {
-	User.getPublicUsers((err, data) => {
+	User.getPublicUsersAll((err, data) => {
 		res.json(data);
 	});
 });
 
 //Get User Profile
 
-router.post("/profile", passport.authenticate('jwt', { session: false }), 
-	(req, res) => {	res.json(req.user); }
-);
+router.get("/profile", passport.authenticate('jwt', { session: false }), (req, res) => {
+	console.log(req.user.email);
+	User.getPrivateUser(req.user.email, (err, data)=>{
+		res.json(data);
+	});
+});
 
 
 
@@ -90,6 +93,7 @@ router.post("/signup", (req, res, next)=>{
 //User Login
 
 router.post("/login",(req, res, next) => {
+	console.log("222222222222");
 	let user = req.body;
 	const result = UserLoginSchema.validate(user);
 	let err = typeof result.error !== 'undefined';
@@ -97,7 +101,6 @@ router.post("/login",(req, res, next) => {
 	if (err) { res.json({"err": true, "msg": result.error}); return;}
 
 	User.getPrivateUser(user.email, (err, _user) => {
-		console.log(_user);
 
 		if (err) { res.json({"err": true, "msg": err }); return;}
 
@@ -108,8 +111,6 @@ router.post("/login",(req, res, next) => {
 			let payload = {
 				id: _user.id
 			};
-
-			console.log(_user);
 
 			var token = jwt.sign(payload, config.secret);
 		

@@ -1,0 +1,4 @@
+<div [ngClass]="{'open':open,'tab':true}">
+	<div  id="cross" (click)="onTabClick()" [innerHTML]="cross"></div>
+    <ng-content></ng-content>
+</div>

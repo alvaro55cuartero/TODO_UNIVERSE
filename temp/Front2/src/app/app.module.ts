@@ -24,7 +24,7 @@ import { IndexComponent } from './components/sections/index/index.component';
 
 import { NewsComponent } from './components/sections/news/news.component';
 
-import { EditorComponent } from './components/sections/editor/editor.component';
+import { EditorComponent } from './components/sections/editor/editor-base/editor.component';
 
 import { TextsComponent } from './components/sections/texts/texts-base/texts.component';
 import { TextsListComponent } from './components/sections/texts/texts-list/texts-list.component';
@@ -46,6 +46,9 @@ import { AccordionComponent } from './components/elements/accordion/accordion.co
 import { AlertComponent } from './components/elements/alert/alert.component';
 
 import { LoginService } from './services/login/login.service';
+import { EditorMainComponent } from './components/sections/editor/editor-main/editor-main.component';
+import { EditorSideComponent } from './components/sections/editor/editor-side/editor-side.component';
+import { SideComponent } from './components/elements/side/side.component';
 
 @NgModule({
 	declarations: [
@@ -84,7 +87,10 @@ import { LoginService } from './services/login/login.service';
 		
 		AccordionComponent,
 		AccordionItemComponent,
-		AlertComponent
+		AlertComponent,
+		EditorMainComponent,
+		EditorSideComponent,
+		SideComponent
 	],
 	imports: [
 		BrowserModule,

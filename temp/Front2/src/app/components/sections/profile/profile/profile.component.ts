@@ -12,7 +12,7 @@ export class ProfileComponent implements OnInit {
 	texts: any;
 	constructor(
 		private router: ActivatedRoute,
-		private httpService: HttpService,
+		private http: HttpService,
 	) { }
 
 	ngOnInit(): void {
@@ -24,9 +24,14 @@ export class ProfileComponent implements OnInit {
 	}
 
 	updateUser() {
-		//this.httpService.getProfile((data: any) => {
-		//	this.user = data.user;
-		//	this.texts = [...data.user.texts];
-		//});
+		this.http.getProfile((data: any) => {
+			console.log(data);
+			this.user = data;
+			this.texts = [...data.texts];
+		});
+	}
+
+	onTextDeleteClick(id) {
+
 	}
 }

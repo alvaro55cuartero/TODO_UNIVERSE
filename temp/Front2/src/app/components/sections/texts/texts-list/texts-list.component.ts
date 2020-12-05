@@ -17,7 +17,7 @@ export class TextsListComponent implements OnInit {
 	
 	ngOnInit(): void {
 		this.http.textGet((data:any) => {
-			this.texts = data; console.log(data);
+			this.texts = data;
 		});
 	}
 

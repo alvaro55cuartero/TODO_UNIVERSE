@@ -15,6 +15,7 @@ mongoose.connection.on("error", (err) => {console.log("DATABASE ERROR: " + err)}
 
 const userRoute = require("./API/routes/users.js");
 const textRoute = require("./API/routes/texts.js");
+const characterRoute = require("./API/routes/characters.js");
 
 //app.use(cors({origin: "http://localhost:8080"}));
 
@@ -29,5 +30,6 @@ app.use(express.json());
 
 app.use("/user", userRoute);
 app.use("/text", textRoute);
+app.use("/character", characterRoute);
 
 app.listen(PORT);

@@ -1,1 +1,25 @@
-<p>admin-database-characters works!</p>
+<div>
+	<app-accordion-item title="ADD">
+		<form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+			<label>
+				Name:
+				<input type="text" formControlName="name">
+            </label>
+            
+			<label>
+				Owner:
+				<input type="text" formControlName="owner">
+			</label>
+
+			<input type="submit">
+		</form>
+	</app-accordion-item>
+</div>
+<br>
+<div>
+	<div class="bg-c row" *ngFor="let item of data">
+		<div class="s12 p-1">
+			{{item.name}}
+		</div>
+	</div>
+</div>

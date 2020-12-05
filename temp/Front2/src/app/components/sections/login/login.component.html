@@ -1,10 +1,10 @@
-<div class="main">
-	<div id="Login-log" class="panel">
+<div class="main content bg-c">
+	<div id="Login-log" class="panel bg-4 center">
 		<h2>Log in</h2>
 		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" id="Login-form">
-			<input formControlName="email" id="Login-email"  class="input" type="text" placeholder="Enter Email" required><br>
-			<input formControlName="password" id="Login-pass" class="input" type="password" placeholder="Enter Password" required><br>
-			<button id="Login-button" type="submit">Login</button>
+			<input formControlName="email" class="form-text" type="text" placeholder="Enter Email" required><br>
+			<input formControlName="password" class="form-text" type="password" placeholder="Enter Password" required><br>
+			<button class="form-button" type="submit">Login</button>
 		</form>
 	</div>
 </div>

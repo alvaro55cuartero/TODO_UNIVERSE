@@ -33,60 +33,39 @@ const UserSchema = mongoose.Schema({
 const User = module.exports = mongoose.model("User", UserSchema);
 
 
-//Functions
+//	Functions
 
 
-
-// Get user public info by id
+//	GET
 
 module.exports.getPublicUserById = function(userId, callback) {
-
-	User.findById(userId, (err, user)=>{
-
-		let publicUser = {
-			email: user.email,
-			status: user.status
-		};
-		console.log(publicUser);
-
-		callback(err, publicUser);
-	});
+	User.findById(userId, "email status", callback);
 }
 
 
 
-// Get user public info by query
+//	By query
 
-module.exports.getPublicUser = function(email, callback) {
-	User.findOne(user, (err, user)=>{
-		let publicUser = {
-			email: user.email,
-			status: user.status
-		};
-
-		callback(err, publicUser);
-	});
+module.exports.getPublicUser = function(query, callback) {
+	User.findOne(query, "email status", callback);
 }
 
-// Get users public info by query
+// Get all users public info by query
 
-module.exports.getPublicUsers = function(callback) {
-	User.find({}, 'username status', callback);
+module.exports.getPublicUsersAll = function(callback) {
+	User.find({}, "email status", callback);
+}
+
+// Get all users public info by query
+
+module.exports.getPublicUsersAll = function(callback) {
+	User.find({}, "email status", callback);
 }
 
 // Get user private info by id
 
 module.exports.getPrivateUserById = function(userId, callback) {
-	User.findById(userId, (err, user)=>{
-		console.log(err);
-		let privateUser = {
-			email: user.email,
-			status: user.status,
-			password: user.password
-		};
-
-		callback(err, privateUser);
-	});
+	User.findById(userId, "email status password", callback);
 }
 
 
@@ -94,13 +73,14 @@ module.exports.getPrivateUserById = function(userId, callback) {
 // Get user private info by query
 
 module.exports.getPrivateUser = function(email, callback) {
-	User.findOne({email: email}, (err, user)=>{
-		callback(err, user);
-	});
+	User.findOne({email: email}, callback)
 }
 
 
-// CREATE NEW USER
+// CREATE
+
+
+// new user
 
 module.exports.createUser = function(user, callback) {
  
@@ -119,3 +99,11 @@ module.exports.createUser = function(user, callback) {
 		}
 	});
 }
+
+
+// DELETE
+
+
+// UPDATE
+
+

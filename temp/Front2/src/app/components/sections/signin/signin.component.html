@@ -1,1 +1,11 @@
-<p>signin works!</p>
+<div class="main content">
+	<div id="Signin-sign" class="panel">
+		<h2>Sign in</h2>
+		<form [formGroup]="signinForm" (ngSubmit)="onSubmit()" id="Signin-form">
+			<input formControlName="email" class="form-text" type="text" placeholder="Enter Email" required><br>
+			<input formControlName="password" class="form-text" type="password" placeholder="Enter Password" required><br>
+			<button  [disabled]="signinForm.invalid" class="form-button" type="submit">Signin</button>
+		</form>
+	</div>
+</div>
+	

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 import { HttpService } from "../../../../../services/http/http.service";
 import { AlertService } from "../../../../../services/alert/alert.service";
@@ -10,13 +10,11 @@ import { AlertService } from "../../../../../services/alert/alert.service";
 	styleUrls: ['./admin-database-texts.component.sass']
 })
 export class AdminDatabaseTextsComponent implements OnInit {
-	textForm = new FormControl('');
+	textForm = new FormGroup({
+		title: new FormControl(''),
+		author: new FormControl('')
+	});
 	data: any;
-
-	options = {
-        autoClose: false,
-        keepAfterRouteChange: false
-    };
 
 	constructor(
 		private http: HttpService,
@@ -24,7 +22,7 @@ export class AdminDatabaseTextsComponent implements OnInit {
 	) { }
 	
 	ngOnInit(): void {
-		this.http.get("http://127.0.0.1:3000/text", (data:any) => {this.data = data; console.log(data);});
+		this.http.textGet((data:any) => {this.data = data});
 	}
 
 	onSubmit() {

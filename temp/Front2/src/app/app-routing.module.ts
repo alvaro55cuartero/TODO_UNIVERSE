@@ -13,7 +13,7 @@ import { AdminDatabaseCharactersComponent } from 'src/app/components/sections/ad
 import { AdminDatabaseComponent } from 'src/app/components/sections/admin/admin-database/Admin-database-base/admin-database.component';
 
 import {NewsComponent} from 'src/app/components/sections/news/news.component'
-import {EditorComponent} from 'src/app/components/sections/editor/editor.component'
+import {EditorComponent} from 'src/app/components/sections/editor/editor-base/editor.component'
 import {EncyclopediaComponent} from 'src/app/components/sections/encyclopedia/encyclopedia.component'
 import {TextsListComponent} from 'src/app/components/sections/texts/texts-list/texts-list.component'
 import {TextsReaderComponent } from 'src/app/components/sections/texts/texts-reader/texts-reader.component'

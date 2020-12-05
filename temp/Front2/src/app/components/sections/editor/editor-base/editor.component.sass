@@ -1,0 +1,62 @@
+@keyframes example
+  0%
+    box-shadow: 0px 0px 5px 1px #222
+  50%
+    box-shadow: 0px 0px 5px 1px #db7c00
+  100%
+    box-shadow: 0px 0px 5px 1px #ef9002
+    color: #db7c00
+
+#Editor-main
+  position: relative
+
+.tab
+  position: absolute
+  top: 0
+  left: 0
+  height: 100%
+
+mark
+  border-radius: 3px
+  cursor: pointer
+  background-color: transparent
+
+mark:hover
+  background-color: #b1d5e5
+
+
+.closebtn
+  font-size: 36px
+
+.update
+  top: 60px
+  right: 200px
+
+.upload
+  top: 60px
+  right: 130px
+
+
+.boton
+  position: absolute
+
+  width: 60px
+  height: 60px
+  box-shadow: 0 0 5px #333
+  border-radius: 60px
+  border-color: #444
+  background-color: #444
+  line-height: 55px
+  text-align: center
+  cursor: pointer
+  color: #ddd
+  font-size: 30px
+
+.boton:hover
+  animation-name: example
+  animation-duration: 0.4s
+  box-shadow: 0px 0px 5px #ef9002
+  color: #db7c00
+
+.boton:active
+  background-color: #333

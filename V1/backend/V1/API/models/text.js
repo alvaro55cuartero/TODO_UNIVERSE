@@ -77,7 +77,6 @@ module.exports.getPublicText = function(title, callback) {
 }
 
 module.exports.createText = function(text, callback) {
-	console.log();
 	_text = new Text(text);
 	_text.save(callback);
 }

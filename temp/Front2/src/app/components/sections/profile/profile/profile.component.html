@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main content">
 	<div class= "row panel bg-white">
 		<div *ngIf="user" class=" s6">
 			<h2>{{user.username}}</h2>
@@ -13,13 +13,18 @@
 				WIP:
 
 				<div *ngFor="let text of texts; let i=index" class="">
-					<app-profile-list *ngIf="text.status =='wip'" [text]="text" [texts]="texts" [index]="i"></app-profile-list>
+					<app-profile-list *ngIf="text.status =='wip'" [text]="text" [texts]="texts" [index]="i">
+						<a class="s2 yellow" *ngIf="text.status == 'wip'" routerLink="/editor/{{text.title}}">Edit</a>
+						<a class="s2 red" *ngIf="text.status == 'wip'" (click)="onTextDeleteClick(text._id)">Delete</a>
+					</app-profile-list>
 				</div>
 				<br>
 
 				Finish:
 				<div *ngFor="let text of texts; let i=index" class="">
-					<app-profile-list *ngIf="text.status =='finish'" [text]="text" [texts]="texts" [index]="i"></app-profile-list>
+					<app-profile-list *ngIf="text.status =='finish'" [text]="text" [texts]="texts" [index]="i">
+						<a class="s2 green" routerLink="/texts/{{text.title}}">Read</a>
+					</app-profile-list>
 				</div>
 			</div>
 		</div>
