@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms'
+
 import { HttpService } from '../../../../services/http/http.service'
 
 @Component({
@@ -8,8 +10,14 @@ import { HttpService } from '../../../../services/http/http.service'
 	styleUrls: ['./profile.component.sass']
 })
 export class ProfileComponent implements OnInit {
+
 	user: any;
 	texts: any;
+	characterForm = new FormGroup({
+		name: new FormControl(),
+		lastName: new FormControl()
+	});
+	
 	constructor(
 		private router: ActivatedRoute,
 		private http: HttpService,
@@ -25,7 +33,6 @@ export class ProfileComponent implements OnInit {
 
 	updateUser() {
 		this.http.getProfile((data: any) => {
-			console.log(data);
 			this.user = data;
 			this.texts = [...data.texts];
 		});
@@ -33,5 +40,11 @@ export class ProfileComponent implements OnInit {
 
 	onTextDeleteClick(id) {
 
+	}
+
+	onCreateCharacter() {
+		this.http.createCharacter(this.characterForm.value, (result)=>{
+			console.log(result);
+		});
 	}
 }

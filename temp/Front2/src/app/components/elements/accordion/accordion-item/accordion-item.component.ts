@@ -8,10 +8,8 @@ import { Component, Input, Output, EventEmitter, ɵConsole  } from '@angular/cor
 export class AccordionItemComponent {
 	@Input() opened = false;
 	@Input() title: string;
-	//@Output() toggle: EventEmitter<any> = new EventEmitter<any>();
 
 	toggle() {
-		console.log("vuttone");
 		this.opened = !this.opened;
 	}
 }

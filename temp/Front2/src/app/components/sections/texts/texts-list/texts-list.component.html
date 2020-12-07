@@ -1,14 +1,43 @@
 <div class="main content">
-	<!--<form id="Tale-Filter" method="POST">
-		<div class="Tale-Filter-Item">Mejor Valorados</div>
-		<div class="Tale-Filter-Item">Ultimos Textos</div>
-		<div class="Tale-Filter-Item-Title">status</div>
-		<div class="Tale-Filter-Item">Leyendas</div>
-		<div class="Tale-Filter-Item">Mitos</div>
-
-		<input id="Tale-Filter-Out" type="hidden" name="filter">
-		<input id="Tale-Filter-Submit" type="submit" value="Filtrar">
-	</form>-->
+	<app-accordion-item title="Filtros">
+		<form [formGroup]="filterForm" onSubmit="onFilterSubmit()" class="p-20" id="Tale-Filter">
+		
+			<div class="row">
+				<div class="s2">
+					<div>Common</div>
+	
+					<div class="form-checkbox">
+						<input type="checkbox" id="ck-1"/>
+						<label for="ck-1">Mejor Valorados</label>
+					</div>
+			
+					<div>
+						<input type="checkbox" id="ck-2"/>
+						<label for="ck-2">Ultimos Textos</label>
+					</div>
+				</div>
+				
+				<div class="s2">
+					<div>status</div>
+			
+					<div>
+						<input type="checkbox" id="ck-3"/>
+						<label for="ck-3">Leyendas</label>
+					</div>
+			
+					<div>
+						<input type="checkbox" id="ck-4"/>
+						<label for="ck-4">Mitos</label>
+					</div>
+				</div>
+			</div>
+	
+			<input class="form-button m-auto" type="submit" value="Filtrar">
+		</form>	
+	</app-accordion-item>
+	
+	<br>
+	<br>
 
 	<div class="row">
 		<app-texts-list-item class="s4" *ngFor="let text of texts" [text]="text"></app-texts-list-item>

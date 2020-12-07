@@ -7,15 +7,26 @@
 			<h5>status: {{user.status}}</h5>
 			<h5>state: ##state##</h5>
 		</div>
+
 		<div class="s6">
-			<h2>Your books:</h2>
+			<h2>Your Characters:</h2>
+			<app-accordion-item title="Create New Character">
+				<form [formGroup]="characterForm" (ngSubmit)="onCreateCharacter()">
+					<input type="text" formControlName="name">
+					<input type="text" formControlName="lastName">
+					<input type="submit" value="crear">
+				</form>
+			</app-accordion-item>
+
+			<br>
+
 			<div *ngIf="user" class="">
 				WIP:
 
 				<div *ngFor="let text of texts; let i=index" class="">
 					<app-profile-list *ngIf="text.status =='wip'" [text]="text" [texts]="texts" [index]="i">
-						<a class="s2 yellow" *ngIf="text.status == 'wip'" routerLink="/editor/{{text.title}}">Edit</a>
-						<a class="s2 red" *ngIf="text.status == 'wip'" (click)="onTextDeleteClick(text._id)">Delete</a>
+						<a class="s2 center" *ngIf="text.status == 'wip'" routerLink="/editor/{{text.title}}">Edit</a>
+						<a class="s2 center" *ngIf="text.status == 'wip'" (click)="onTextDeleteClick(text._id)">Delete</a>
 					</app-profile-list>
 				</div>
 				<br>
@@ -23,7 +34,7 @@
 				Finish:
 				<div *ngFor="let text of texts; let i=index" class="">
 					<app-profile-list *ngIf="text.status =='finish'" [text]="text" [texts]="texts" [index]="i">
-						<a class="s2 green" routerLink="/texts/{{text.title}}">Read</a>
+						<a class="s2 center" routerLink="/texts/{{text.title}}">Read</a>
 					</app-profile-list>
 				</div>
 			</div>

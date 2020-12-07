@@ -21,7 +21,6 @@ export class ProfileListComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		console.log(this.text);
 
 	}
 

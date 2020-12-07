@@ -49,6 +49,9 @@ import { LoginService } from './services/login/login.service';
 import { EditorMainComponent } from './components/sections/editor/editor-main/editor-main.component';
 import { EditorSideComponent } from './components/sections/editor/editor-side/editor-side.component';
 import { SideComponent } from './components/elements/side/side.component';
+import { SchemeBaseComponent } from './components/sections/scheme/scheme-base/scheme-base.component';
+import { ModalComponent } from './components/elements/modal/modal.component';
+import { CharactersComponent } from './components/sections/characters/characters.component';
 
 @NgModule({
 	declarations: [
@@ -90,7 +93,10 @@ import { SideComponent } from './components/elements/side/side.component';
 		AlertComponent,
 		EditorMainComponent,
 		EditorSideComponent,
-		SideComponent
+		SideComponent,
+		SchemeBaseComponent,
+		ModalComponent,
+		CharactersComponent
 	],
 	imports: [
 		BrowserModule,

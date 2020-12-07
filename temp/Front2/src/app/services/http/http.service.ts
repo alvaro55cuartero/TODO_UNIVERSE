@@ -35,6 +35,34 @@ export class HttpService {
 		this.http.post(path, data, {headers: headers}).subscribe(callback);
 	}
 
+	put(path, data, callback) {
+		let token = localStorage.getItem("id_token");
+		let headers = new HttpHeaders();
+
+		headers = headers.append('Content-Type', 'application/json');
+		
+		if (token) {
+			headers = headers.append('Authorization', token);
+		}
+
+		this.http.put(path, data, {headers: headers}).subscribe(callback);
+	}
+
+
+	delete(path, callback) {
+		let token = localStorage.getItem("id_token");
+		let headers = new HttpHeaders();
+
+		headers = headers.append('Content-Type', 'application/json');
+		
+		if (token) {
+			headers = headers.append('Authorization', token);
+		}
+
+		this.http.delete(path, {headers: headers}).subscribe(callback);
+	}
+
+
 
 	//Text
 
@@ -76,53 +104,29 @@ export class HttpService {
 	}
 
 	getProfileUser(username, callback) {
-		this.get(`http://127.0.0.1/users/profile/${username}`, callback);
+		this.get(`http://127.0.0.1:3000/user/profile/${username}`, callback);
 	}
 
-	deleteText(textId) {
-		let token = localStorage.getItem("id_token");
-
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
-		return this.http.delete(`http://127.0.0.1/texts/${textId}`, {headers: headers});
+	deleteText(textId, callback) {
+		this.delete(`http://127.0.0.1:3000/text/${textId}`, callback);
 	}
 
 	getTexts(callback) {
-		let token = localStorage.getItem("id_token");
-
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
-		return this.http.get(`http://127.0.0.1/texts`, {headers: headers}).subscribe(callback);
+		this.get(`http://127.0.0.1:3000/text`, callback);
 	}
 
 	uploadText(text, callback) {
-		let token = localStorage.getItem("id_token");
-
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
-		return this.http.post("http://127.0.0.1/texts/", text, {headers: headers}).subscribe(callback);
+		this.post("http://127.0.0.1:3000/text", text, callback);
 	}
 
 	updateText(text, callback) {
-		let token = localStorage.getItem("id_token");
-
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
-		return this.http.put("http://127.0.0.1/texts/", text,  {headers: headers}).subscribe(callback);
+		this.put("http://127.0.0.1:3000/text", text, callback);
 	}
 
 	search(search) {
 		let headers = new HttpHeaders();
 		headers.set("Content-Type", "application/json");
-		let a = this.http.get("http://127.0.0.1/search/" + search, {headers: headers});
+		let a = this.http.get("http://127.0.0.1:3000/search/" + search, {headers: headers});
 		return a;
 	}
 	 /*
@@ -143,24 +147,10 @@ export class HttpService {
 
 
 	createCharacter(character, callback) {
-		let token = localStorage.getItem("id_token");
-
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
-
-		this.http.post("http://127.0.0.1:3000/character", character, {headers: headers}).subscribe(callback);
+		this.post("http://127.0.0.1:3000/character", character, callback);
 	}
 
 	getCharacters(callback) {
-		let token = localStorage.getItem("id_token");
-
-		let headers = new HttpHeaders({
-		'Content-Type':  'application/json',
-		'Authorization': token
-		});
-
-		this.http.get("http://127.0.0.1:3000/character", {headers: headers}).subscribe(callback);
+		this.get("http://127.0.0.1:3000/character", callback);
 	}
 }

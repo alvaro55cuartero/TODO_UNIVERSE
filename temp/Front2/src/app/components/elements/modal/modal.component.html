@@ -1,0 +1,25 @@
+<div *ngIf="modal" class="fill bg-aa">
+	<div *ngIf="isTypeQuestion(modal.type)" class="bg-3 aaa">
+		<div class="center pb-10" *ngFor="let line of modal.message">
+			{{line}}
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="row">
+			<button class="s5" (click)="onAccepted()">Si</button>
+			<div class="s2"></div>
+			<button class="s5" (click)="onRejected()">No</button>
+		</div>
+	</div>
+
+	<div *ngIf="isTypeInfo(modal.type)" class="bg-3 aaa">
+		<div class="center pb-10" *ngFor="let line of modal.message">
+			{{line}}
+		</div>
+	
+		<div class="row">
+			<button class="s12" (click)="onRejected()">cerrar</button>
+		</div>
+	</div>
+</div>

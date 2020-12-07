@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms'
 import { HttpService } from '../../../../services/http/http.service'
 
 
@@ -10,6 +11,13 @@ import { HttpService } from '../../../../services/http/http.service'
 export class TextsListComponent implements OnInit {
 	
 	texts: any;
+	
+	filterForm = new FormGroup(
+		{
+			email: new FormControl(),
+			password: new FormControl()
+		}
+	);
 
 	constructor(
 		private http: HttpService
@@ -21,4 +29,7 @@ export class TextsListComponent implements OnInit {
 		});
 	}
 
+	onFilterSubmit() {
+		
+	}
 }

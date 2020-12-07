@@ -22,6 +22,8 @@ import {ProfileUserComponent} from 'src/app/components/sections/profile/profile-
 
 import {LoginComponent} from 'src/app/components/sections/login/login.component'
 import {SigninComponent} from 'src/app/components/sections/signin/signin.component'
+import { SchemeBaseComponent } from './components/sections/scheme/scheme-base/scheme-base.component';
+import { CharactersComponent } from './components/sections/characters/characters.component';
 
 
 const routes: Routes = [
@@ -48,6 +50,10 @@ const routes: Routes = [
 	
 	{ path: "profile", component: ProfileComponent},
 	{ path: "profile/:id", component: ProfileUserComponent},
+
+	{ path: "scheme/:title", component: SchemeBaseComponent},
+
+	{ path: "character", component: CharactersComponent},
 
 	{ path: "login", component: LoginComponent},
 	{ path: "signin", component: SigninComponent}
