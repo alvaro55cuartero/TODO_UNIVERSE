@@ -1,5 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+//vars
+
+$width: 50px
+$radius: 10px
+
+//keyframes
+
+@keyframes flashkey
+	0%
+		box-shadow: 0px 0px 15px 4px #222
+
+	50%
+		box-shadow: 0px 0px 15px 6px #eda538
+
+	100%
+		box-shadow: 0px 0px 15px 4px #ef9002 /*#eda600*/
+
+//animation
+
+.flash:hover
+	animation-name: flashkey
+	animation-duration: 0.4s
+	box-shadow: 0px 0px 15px 3px #ef9002
+
 *
 	box-sizing: border-box
 	outline: none
@@ -11,14 +36,21 @@ body
 	padding: 0
 	font-family: Arial, Helvetica, sans-serif
 	background-color: #333
+	align-items: center
 
 a
 	cursor: pointer
 	text-decoration: none !important
 	color: inherit
 
+
+
+// Classes
+
 .pointer
 	cursor: pointer
+
+// Card
 
 .card
 	display: flex
@@ -28,9 +60,26 @@ a
 	height: 400px
 	box-shadow: 0px 0px 10px 3px #222
 
+.card-title
+	flex: 0 0 50%
+	background-color: #333
+	border-radius: $radius $radius 0 0
+
+
+.card-body
+	flex: 0 0 50%
+	background-color: #999
+	border-radius: 0 0 $radius $radius
+	padding: 40px
+
+
+// Panel
+
 .panel
 	box-shadow: 10px 10px 10px #111
-	padding: 50px
+	padding: 100px
+	h2
+		padding-bottom: 40px
 
 .main
 	position: relative
@@ -48,7 +97,7 @@ a
 .center
 	text-align: center
 
-
+//forms
 
 .form-text
 	width: 100%
@@ -68,16 +117,75 @@ a
 	cursor: pointer
 	border-radius: 20px
 
+// checkbox 
+
+input[type="checkbox"]
+	display: none
+
+input[type="checkbox"] + label
+	display: block
+	position: relative
+	padding-left: 35px
+	margin-bottom: 20px
+	font: 14px/20px 'Open Sans', Arial, sans-serif
+	cursor: pointer
+	-webkit-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+
+input[type="checkbox"] + label:last-child
+	margin-bottom: 0
+
+input[type="checkbox"] + label:before
+	content: ''
+	display: block
+	width: 15px
+	height: 15px
+	border: 2px solid #000
+	position: absolute
+	left: 0
+	top: 0
+	opacity: .6
+	-webkit-transition: all .12s, border-color .08s
+	transition: all .12s, border-color .08s
+
+input[type="checkbox"]:checked + label:before
+	width: 10px
+	top: -5px
+	left: 5px
+	border-radius: 0
+	opacity: 1
+	border-top-color: transparent
+	border-left-color: transparent
+	transform: rotate(45deg)
+
+// END checkbox 
 
 
-.m-1
+.m-auto
+	margin: 0px auto
+
+.m-10
 	margin: 10px
+	
+.mb-10
+	margin-bottom: 10px
 
-.p-1
+.pb-10
+	padding-bottom: 10px
+
+.p-10
 	padding: 10px
+
+.p-20
+	padding: 20px
+
+.p-30
+	padding: 30px
 
 .p-100
 	padding: 100px
+
 
 
 /* Colors */ 
@@ -85,18 +193,23 @@ a
 
 .bg-0
 	background-color: #000
+	color: #eee
 
 .bg-1
 	background-color: #111
+	color: #eee
 
 .bg-2
 	background-color: #222
-	
+	color: #eee
+
 .bg-3
 	background-color: #333
+	color: #eee
 
 .bg-4
 	background-color: #444
+	color: #eee
 
 .bg-5
 	background-color: #555
@@ -115,24 +228,32 @@ a
 
 .bg-a
 	background-color: #aaa
+	color: #000
 
 .bg-b
 	background-color: #bbb
-	
+	color: #000
+
 .bg-c
 	background-color: #ccc
+	color: #000
 
 .bg-d
 	background-color: #ddd
+	color: #000
 
 .bg-e
 	background-color: #eee
+	color: #000
 
 .bg-f
 	background-color: #fff
+	color: #000
 
 .bg-white
 	background-color: #fff
+	color: #000
+
 /* End Colors */
 
 .row
