@@ -1,6 +1,6 @@
 <div class="main content">
-	<div class= "row panel bg-white">
-		<div *ngIf="user" class=" s6">
+	<div *ngIf="user" class= "row panel bg-white">
+		<div class=" s6">
 			<h2>{{user.username}}</h2>
 			<h5>userid: {{user._id}}</h5>
 			<h5>email: {{user.email}}</h5>
@@ -10,6 +10,16 @@
 
 		<div class="s6">
 			<h2>Your Characters:</h2>
+
+			<div *ngFor="let character of user.characters">
+				{{character.name}} {{character.lastName}}
+			</div>
+			<div *ngIf="!user.characters">
+				No tienes ningun personaje
+			</div>
+
+			<br>
+
 			<app-accordion-item title="Create New Character">
 				<form [formGroup]="characterForm" (ngSubmit)="onCreateCharacter()">
 					<input type="text" formControlName="name">
@@ -20,10 +30,11 @@
 
 			<br>
 
-			<div *ngIf="user" class="">
+
+			<!--<div *ngIf="user" class="">
 				WIP:
 
-				<div *ngFor="let text of texts; let i=index" class="">
+				<div *ngFor="let text of; let i=index" class="">
 					<app-profile-list *ngIf="text.status =='wip'" [text]="text" [texts]="texts" [index]="i">
 						<a class="s2 center" *ngIf="text.status == 'wip'" routerLink="/editor/{{text.title}}">Edit</a>
 						<a class="s2 center" *ngIf="text.status == 'wip'" (click)="onTextDeleteClick(text._id)">Delete</a>
@@ -37,7 +48,7 @@
 						<a class="s2 center" routerLink="/texts/{{text.title}}">Read</a>
 					</app-profile-list>
 				</div>
-			</div>
+			</div>-->
 		</div>
 	</div>
 </div>

@@ -12,7 +12,7 @@ import { HttpService } from '../../../../services/http/http.service'
 export class ProfileComponent implements OnInit {
 
 	user: any;
-	texts: any;
+	
 	characterForm = new FormGroup({
 		name: new FormControl(),
 		lastName: new FormControl()
@@ -33,8 +33,8 @@ export class ProfileComponent implements OnInit {
 
 	updateUser() {
 		this.http.getProfile((data: any) => {
+			console.log(data);
 			this.user = data;
-			this.texts = [...data.texts];
 		});
 	}
 
