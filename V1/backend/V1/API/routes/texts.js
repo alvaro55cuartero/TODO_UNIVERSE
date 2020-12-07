@@ -45,7 +45,11 @@ router.get("", (req, res) => {
 //Post Text
 
 router.post("", passport.authenticate('jwt', { session: false }), (req, res) => {
-	Text.createText(req.body,(err)=>{
+
+	let text = req.body;
+	text["author"] = req.user.name;
+
+	Text.createText(text,(err)=>{
 		if (err) { res.json({"err":true, "msg":err}); return;}
 		res.json({"err":false, "msg":"success"});
 	});

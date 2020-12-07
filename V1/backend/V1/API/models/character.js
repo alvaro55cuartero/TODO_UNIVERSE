@@ -7,11 +7,17 @@ const CharacterSchema = mongoose.Schema({
 	name: {
 		type: String,
 		min: [4, "Name is too short"],
-		max: [40, "Name is too long"],
+		max: [20, "Name is too long"],
 		required: [true, "Name is required"],
-		unique: true
 	},
 
+	lastName: {
+		type: String,
+		min: [4, "Last name is too short"],
+		max: [20, "Last name is too long"],
+		required: [true, "Name is required"],
+	},
+	
 	owner: {
 		type: mongoose.Schema.Types.ObjectId,
 		require: true

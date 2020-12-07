@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const joi = require("joi");
 const Character = require("../models/character");
+const User = require("../models/user");
+
 const passport = require("../../config/passport");
 const bcrypt = require("bcrypt");
 const config = require("../../config/database");
@@ -49,9 +51,17 @@ router.get("", passport.authenticate('jwt', { session: false }), (req, res) => {
 //Post Text
 
 router.post("", passport.authenticate('jwt', { session: false }), (req, res) => {
-	Character.createCharacter(req.body,(err)=>{
+	let character = req.body;
+	character["owner"] = req.user._id;
+
+	Character.createCharacter(character, (err, character)=>{
 		if (err) { res.json({"err":true, "msg":err}); return;}
-		res.json({"err":false, "msg":"success"});
+
+		User.addCharacter(character, (err)=>{
+			if (err) { res.json({"err":true, "msg":err}); return;}
+			
+			res.json({"err":false, "msg":"success"});
+		});
 	});
 });
 

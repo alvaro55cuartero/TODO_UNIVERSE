@@ -52,9 +52,7 @@ router.get("/profile/:id", (req, res, next)=>{
 	let id = req.params.id;
 
 	User.getPublicUserById(id, (err, user)=>{
-		
 		res.send(user);
-	
 	});
 });
 
@@ -62,7 +60,7 @@ router.get("/profile/:id", (req, res, next)=>{
 
 //User Signup
 
-router.post("/signup", (req, res, next)=>{
+router.post("/signup", (req, res)=>{
 	
 	let user = req.body;
 	const result = UserSignupSchema.validate(user);

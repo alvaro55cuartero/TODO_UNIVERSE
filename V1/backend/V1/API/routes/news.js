@@ -29,7 +29,7 @@ const UserLoginSchema = joi.object().keys({
 //Get Texts
 
 router.get("", (req, res) => {
-	Character.getPublicCharacters((err, data) => {
+	New.getPublicCharacters((err, data) => {
 		console.log(err);
 		res.json(data);
 	});
@@ -39,7 +39,7 @@ router.get("", (req, res) => {
 
 router.get("", passport.authenticate('jwt', { session: false }), (req, res) => {
 	if (req.user.status >= 2) {
-		Character.getPrivateTexts((err, data) => {
+		New.getPrivateTexts((err, data) => {
 			res.json(data);
 		});
 	}
@@ -49,7 +49,7 @@ router.get("", passport.authenticate('jwt', { session: false }), (req, res) => {
 //Post Text
 
 router.post("", passport.authenticate('jwt', { session: false }), (req, res) => {
-	Character.createCharacter(req.body,(err)=>{
+	New.createCharacter(req.body,(err)=>{
 		if (err) { res.json({"err":true, "msg":err}); return;}
 		res.json({"err":false, "msg":"success"});
 	});

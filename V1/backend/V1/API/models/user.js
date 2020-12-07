@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcrypt");
+const { array } = require("joi");
 
 const UserSchema = mongoose.Schema({
 
@@ -20,6 +21,10 @@ const UserSchema = mongoose.Schema({
 		type: Number,
 		required: true,
 		default: 1
+	},
+
+	characters: {
+		type: Array
 	},
 
 	createdAt: {
@@ -82,21 +87,15 @@ module.exports.getPrivateUser = function(email, callback) {
 
 // new user
 
-module.exports.createUser = function(user, callback) {
- 
+module.exports.createUser = function(user, callback) { 
 	bcrypt.hash(user.password, 10, (err, hash) => {
 		
-		if (err) {
+		if (err) { callback(err); return; } 
+		
+		user.password = hash;
+		_user = new User(user);
+		_user.save(callback);
 
-			callback(err);
-
-		} else {
-
-			user.password = hash;
-			_user = new User(user);
-			_user.save(callback);
-
-		}
 	});
 }
 
@@ -106,4 +105,18 @@ module.exports.createUser = function(user, callback) {
 
 // UPDATE
 
+module.exports.addCharacter = function(character, callback) {
+
+	let _character = { 
+		_id: character._id,
+		name: character.name,
+		lastName: character.lastName
+	};
+
+	User.updateOne(
+		{ _id: character.owner }, 
+		{ $push: { characters: _character }},
+		callback
+	);
+}
 
